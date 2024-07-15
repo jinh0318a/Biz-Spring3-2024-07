@@ -1,6 +1,7 @@
 package com.callor.hello.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.callor.hello.models.HomeVO;
 import com.callor.hello.service.HomeService;
 
 @Controller
@@ -57,6 +59,20 @@ public class HomeController {
 		list.add(1, c_tel);
 		model.addAttribute("LIST", list);
 		return null;
+	}
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+		return "next";
+	}
+
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
+	public String home(HomeVO homeVO, Model model) {
+		List<String> list = new ArrayList<String>();
+		list.add(homeVO.getC_name());
+		list.add(homeVO.getC_tel());
+		model.addAttribute("LIST", list);
+		return "next";
 	}
 
 }
