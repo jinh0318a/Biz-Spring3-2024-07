@@ -56,6 +56,7 @@
 - 여기서는 `db-context.xml` 라는 이름으로 설정할 것이다.
 ```xml
 <!-- db-context.xml 에는 다음 3가지  bean과 기타 설정이 추가된다 -->
+	
 	<!-- dataSource -->
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
@@ -81,4 +82,28 @@
 	<!-- mybatis component scan -->
 	<mybatis-spring:scan
 		base-package="com.callor.student.persistance" />
+```
+
+## 한국어 필터 설정하기
+- `web.xml` 파일을 열고 `contextConfigLocation` 코드위에 작성
+```xml
+<!-- 한글 filter -->
+	<filter>
+		<filter-name>encKor</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encKor</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+
 ```
