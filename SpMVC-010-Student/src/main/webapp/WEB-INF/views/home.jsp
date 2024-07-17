@@ -9,7 +9,7 @@
 	<%@include file="/WEB-INF/views/include/header.jsp"%>
 	<section class="main">
 		<h2>학생정보</h2>
-		<table>
+		<table class="student list">
 			<thead>
 				<tr>
 					<th>학번</th>
@@ -22,7 +22,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="one" items="${ST_LIST }">
-					<tr>
+					<tr data-st_num="${one.st_num }">
 						<td>${one.st_num }</td>
 						<td>${one.st_name }</td>
 						<td>${one.st_dept }</td>

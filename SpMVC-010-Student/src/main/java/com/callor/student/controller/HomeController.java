@@ -52,4 +52,11 @@ public class HomeController {
 		return "redirect:/";
 	}
 
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(String st_num, Model model) {
+		StudentVO studentVO = studentDao.findById(st_num);
+		model.addAttribute("one",studentVO);
+		return "student/detail";
+	}
+
 }

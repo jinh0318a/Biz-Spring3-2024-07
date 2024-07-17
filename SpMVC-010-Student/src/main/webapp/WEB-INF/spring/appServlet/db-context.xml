@@ -20,6 +20,8 @@
 		<property name="dataSource" ref="ds" />
 		<property name="typeAliasesPackage"
 			value="com.callor.student.models" />
+		<property name="mapperLocations"
+			value="/WEB-INF/spring/mapper/*-mapper.xml" />
 	</bean>
 
 	<!-- SqlSessionTemplate -->

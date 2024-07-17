@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+section.student.detail {
+  width: 100%;
+  table,
+  div {
+    width: 80%;
+    margin: 5px auto;
+  }
+
+  table {
+    border-collapse: collapse;
+
+    tr {
+      display: flex;
+    }
+
+    th,
+    td {
+      flex: 1;
+      padding: 0.7rem;
+      border-top: 1px solid #777;
+      border-bottom: 1px solid #777;
+    }
+    th {
+      border-right: 1px solid #777;
+      background-color: #aaa;
+      text-align: right;
+    }
+
+    td {
+      background-color: #eee;
+      text-align: left;
+    }
+  }
+}
