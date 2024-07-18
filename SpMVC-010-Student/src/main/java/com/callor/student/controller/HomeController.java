@@ -55,8 +55,24 @@ public class HomeController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String st_num, Model model) {
 		StudentVO studentVO = studentDao.findById(st_num);
-		model.addAttribute("one",studentVO);
+		model.addAttribute("ST",studentVO);
 		return "student/detail";
 	}
-
+	
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String update(String num, Model model) {
+		StudentVO studentVO = studentDao.findById(num);
+		model.addAttribute("ST",studentVO);
+		
+		// update 를 실행할때 jsp 를 새로 만들지 않고 input 을 재활용
+		return "student/input";
+	}
+	
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(String st_num) {
+		int result = studentDao.delete(st_num);
+		return "redirect:/";
+	}
+	
 }

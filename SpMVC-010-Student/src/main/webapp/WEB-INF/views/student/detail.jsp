@@ -12,30 +12,30 @@
 		<table>
 			<tr>
 				<th>학번</th>
-				<td>${one.st_num }</td>
+				<td>${ST.st_num }</td>
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td>${one.st_name }</td>
+				<td>${ST.st_name }</td>
 			</tr>
 			<tr>
 				<th>학과</th>
-				<td>${one.st_dept }</td>
+				<td>${ST.st_dept }</td>
 			</tr>
 			<tr>
 				<th>학년</th>
-				<td>${one.st_grade }</td>
+				<td>${ST.st_grade }</td>
 			</tr>
 			<tr>
 				<th>전화번호</th>
-				<td>${one.st_tel }</td>
+				<td>${ST.st_tel }</td>
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td>${one.st_addr }</td>
+				<td>${ST.st_addr }</td>
 			</tr>
 		</table>
-		<div>
+		<div data-st_num="${ST.st_num }">
 			<button class="list">리스트로</button>
 			<button class="update">수정</button>
 			<button class="delete">삭제</button>
