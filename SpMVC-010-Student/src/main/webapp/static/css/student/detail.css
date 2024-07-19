@@ -24,12 +24,12 @@ section.student.detail {
     }
     th {
       border-right: 1px solid #777;
-      background-color: #aaa;
+      background-color: bisque;
       text-align: right;
     }
 
     td {
-      background-color: #eee;
+      background-color: aliceblue;
       text-align: left;
     }
   }
@@ -58,7 +58,7 @@ section.student.detail {
       &:hover {
         cursor: pointer;
         color: black;
-        background-color: #aaa;
+        background-color: cornsilk;
       }
     }
   }

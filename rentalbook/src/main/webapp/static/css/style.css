@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
+
+* {
+	font-family: "Orbit", sans-serif;
+}
+
+.no-deco-link {
+	color: #444;
+	text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-weight: lighter;
+}
+
+.fs-small {
+	font-size: 0.8rem;
+}
+
+.srch-bar {
+	padding: 12px;
+	border-radius: 12px;
+	font-size: 1.1rem;
+	width: 480px;
+}
+
+.login-input {
+	padding: 16px;
+	border: 1px solid #ddd;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 1.25rem;
+	border-radius: 20px;
+}
+
+
+
+/* table css */
+.default-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.default-table th,td{
+	padding:4px;
+}
+
+.border-tr {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #DDD;
+}
+
+.td-left {
+	border: 1px solid #ccc;
+	padding: 12px;
+	text-align: center;
+	background-color: #dddddd;
+}
+
+.td-right {
+	border: 1px solid #ccc;
+	padding: 12px;
+}
+
