@@ -19,11 +19,6 @@
 			value="/WEB-INF/views/student/list.jsp" />
 	</definition>
 
-	<definition name="insert" extends="default">
-		<put-attribute name="content"
-			value="/WEB-INF/views/student/input.jsp" />
-	</definition>
-
 </tiles-definitions>
   
   

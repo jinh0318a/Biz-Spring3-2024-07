@@ -18,9 +18,14 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/input", method = RequestMethod.GET)
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String input() {
-		return "insert";
+		return "student/input";
+	}
+
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail() {
+		return "student/detail";
 	}
 
 }

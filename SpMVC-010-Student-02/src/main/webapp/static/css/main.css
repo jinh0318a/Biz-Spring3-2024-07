@@ -16,10 +16,10 @@ a {
   color: inherit;
 }
 
-header.home {
+header.main {
   padding: 1.3rem;
   text-align: center;
-  background-color: black;
+  background-color: blanchedalmond;
   color: white;
   display: flex;
   justify-content: center;
@@ -38,25 +38,27 @@ header.home {
   h1 {
     flex: 3;
     white-space: nowrap;
+    text-shadow: 1px 1px 1px black;
   }
 
   div {
     flex: 1;
     a {
-      color: #fff;
+      color: #777;
       display: inline-block;
-      padding: 0.5rem 1rem 0 1rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
       border-bottom: 1px solid transparent;
       transition: 0.7s;
+      white-space: nowrap;
       &:hover {
-        border-bottom: 1px solid yellow;
+        border-bottom: 1px solid blue;
       }
     }
   }
 }
-/* header.home end */
+/* header.main end */
 
-nav.home {
+nav.main {
   background-color: #555;
   font-weight: bold;
   color: white;
@@ -79,6 +81,10 @@ nav.home {
         border-bottom: 2px solid yellow;
         box-shadow: inset 500px 0 0 #000;
       }
+    }
+
+    li:nth-of-type(2) {
+      margin: auto;
     }
   }
 }
