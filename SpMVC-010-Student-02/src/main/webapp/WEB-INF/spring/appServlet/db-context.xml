@@ -9,7 +9,7 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc/mysql://localhost:3306/schooldb" />
+			value="jdbc:mysql://localhost:3306/schooldb" />
 		<property name="username" value="schoolUser" />
 		<property name="password" value="s1234" />
 	</bean>
