@@ -1,18 +1,11 @@
 package com.callor.rentalbook.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.callor.rentalbook.vo.Book;
-
-import oracle.jdbc.datasource.impl.OracleDataSource;
 
 public interface BookDao {
 
