@@ -5,6 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content='width=device-width, initial-scale=1.0'/>
-<title>학사관리 시스템 2024</title>
+<title>학사정보관리 시스템 2024</title>
 <link rel="stylesheet" href="${rootPath }/static/css/home.css">
 </head>
