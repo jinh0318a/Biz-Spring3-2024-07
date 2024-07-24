@@ -8,7 +8,7 @@
 <tiles:insertAttribute name="head" />
 <body>
 	<tiles:insertAttribute name="header" />
-	<tiles:insertAttribute name="main-content" />
+	<tiles:insertAttribute name="content" />
 </body>
 </html>
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.student.models.StudentVO;
 import com.callor.student.persistance.StudentDao;
+import com.callor.student.service.StudentService;
 
 /**
  * Handles requests for the application home page.
@@ -19,10 +20,12 @@ import com.callor.student.persistance.StudentDao;
 @Controller
 public class HomeController {
 
+	private final StudentService studentService;
 	private final StudentDao studentDao;
 
-	public HomeController(StudentDao studentDao) {
+	public HomeController(StudentService studentService, StudentDao studentDao) {
 		super();
+		this.studentService = studentService;
 		this.studentDao = studentDao;
 	}
 
@@ -54,7 +57,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String st_num, Model model) {
-		StudentVO studentVO = studentDao.findById(st_num);
+		StudentVO studentVO = studentService.findById(st_num);
 		model.addAttribute("ST", studentVO);
 		return "student/detail";
 	}
@@ -72,7 +75,7 @@ public class HomeController {
 	public String update(String num, StudentVO studentVO) {
 		studentVO.setSt_num(num);
 		int result = studentDao.update(studentVO);
-		return "redirect:/detail?st_num="+num;
+		return "redirect:/detail?st_num=" + num;
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
