@@ -59,4 +59,14 @@ from tbl_score
 		on sc_sbcode = sb_code 
 where st_num='S0001';
 
+drop view view_scores;
+create view view_score
+as
+(select SC.*, SB.sb_name from tbl_score SC join tbl_subject SB on sc_sbcode = sb_code);
 
+select * from view_score;
+desc view_score;
+
+desc tbl_student;
+desc tbl_subject;
+desc tbl_score;

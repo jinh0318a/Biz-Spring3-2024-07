@@ -13,11 +13,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Builder
-public class StudentVO {
-	private String st_num;
-	private String st_name;
-	private String st_dept;
-	private int st_grade;
-	private String st_tel;
-	private String st_addr;
+public class ScoreVO {
+	private String sc_stnum;	// varchar(5)
+	private String sc_sbcode;	// varchar(5)
+	private String sb_name;	// varchar(20)
+	private int sc_score;	// int
 }
