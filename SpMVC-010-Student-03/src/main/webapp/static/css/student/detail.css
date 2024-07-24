@@ -3,7 +3,8 @@
 section.student.detail {
   width: 100%;
   table,
-  div {
+  div,
+  ul {
     width: 80%;
     margin: 5px auto;
   }
@@ -24,13 +25,26 @@ section.student.detail {
     }
     th {
       border-right: 1px solid #777;
-      background-color: bisque;
+      background-color: #ddd;
       text-align: right;
     }
 
     td {
-      background-color: aliceblue;
+      background-color: white;
       text-align: left;
+    }
+  }
+
+  ul {
+    list-style: none;
+    li {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      span,
+      strong {
+        flex: 1;
+        padding: 12px 16px;
+      }
     }
   }
 

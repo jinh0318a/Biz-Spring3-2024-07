@@ -4,9 +4,9 @@
 <c:set value="${pageContext.request.contextPath }" var="rootPath" />
 <!DOCTYPE html>
 <html lang="ko">
-<%@include file="/WEB-INF/views/include/head.jspf"%>
+
 <body>
-	<%@include file="/WEB-INF/views/include/header.jsp"%>
+
 	<h1>공지사항</h1>
 </body>
 </html>

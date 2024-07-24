@@ -1,14 +1,12 @@
 package com.callor.student.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.student.models.StudentVO;
 import com.callor.student.persistance.StudentDao;
@@ -34,6 +32,18 @@ public class HomeController {
 		List<StudentVO> stList = studentDao.selectAll();
 		model.addAttribute("ST_LIST", stList);
 		return "home";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/num_check", method = RequestMethod.GET)
+	public String stNumCheck(String st_num) {
+		// PK 를 기준으로 Select 하여 결과 리턴
+		// 만약 id 에 해당하는 데이터가 있으면 그 값을 리턴하고 없으면 null 을 리턴한다
+		StudentVO studentVO = studentService.findById(st_num);
+		if (studentVO == null) {
+			return "NOT FOUND";
+		}
+		return "FOUND";
 	}
 
 	// 학생정보를 입력받기위한 화면을 보여주는 메서드

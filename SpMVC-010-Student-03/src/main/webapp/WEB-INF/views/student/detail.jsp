@@ -33,7 +33,7 @@
 		</tr>
 	</table>
 	<ul class="score list">
-		<li><span>과목코드</span> <span>과목명</span><span>성적</span></li>
+		<li><strong>과목코드</strong> <strong>과목명</strong><strong>성적</strong></li>
 		<c:forEach items="${ST.st_scores}" var="score">
 			<li><span>${score.sc_sbcode }</span><span>${score.sb_name }</span>
 				<span>${score.sc_score }</span></li>

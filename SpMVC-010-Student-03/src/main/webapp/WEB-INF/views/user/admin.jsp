@@ -4,9 +4,9 @@
 <c:set value="${pageContext.request.contextPath }" var="rootPath" />
 <!DOCTYPE html>
 <html lang="ko">
-<tiles:insertAttribute name="head" />
+
 <body>
-	<tiles:insertAttribute name="header" />
+
 	<h1>관리자</h1>
 </body>
 </html>
