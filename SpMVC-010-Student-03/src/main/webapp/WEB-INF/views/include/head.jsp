@@ -16,4 +16,5 @@
 <script src="${rootPath }/static/js/student/list.js"></script>
 <script src="${rootPath }/static/js/student/detail.js"></script>
 <script src="${rootPath }/static/js/student/input.js"></script>
+<script src="${rootPath }/static/js/user/join.js"></script>
 </head>

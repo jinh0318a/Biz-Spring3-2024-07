@@ -7,19 +7,19 @@
 	<fieldset>
 		<legend>회원가입</legend>
 		<div>
-			<input type="text" placeholder="ID" />
+			<input type="text" placeholder="ID" /> <span>*</span>
 		</div>
 		<div>
-			<input type="password" placeholder="PASSWORD" />
+			<input type="password" placeholder="PASSWORD" /> <span>*</span>
 		</div>
 		<div>
-			<input type="text" placeholder="본명" />
+			<input type="text" placeholder="본명" /> <span>*</span>
 		</div>
 		<div>
-			<input type="text" placeholder="닉네임" />
+			<input type="text" placeholder="닉네임" /> <span>*</span>
 		</div>
 		<div>
 			<input class="button" type="button" value="회원가입" />
-		</div>	
+		</div>
 	</fieldset>
 </form>
