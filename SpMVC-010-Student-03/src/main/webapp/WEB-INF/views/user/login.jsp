@@ -16,7 +16,7 @@
 			<input type="password" placeholder="PASSWORD" name="password" /> <span>*</span>
 		</div>
 		<div>
-			<input class="button" type="button" value="로그인" />
+			<input class="button" type="submit" value="로그인" />
 		</div>
 	</fieldset>
 </form>
