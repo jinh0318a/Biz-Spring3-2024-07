@@ -66,4 +66,9 @@ form.user.login {
     width: 85%;
     text-align: center;
   }
+
+  h4 {
+    background-color: red;
+    color: yellow;
+  }
 }

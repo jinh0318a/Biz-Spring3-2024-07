@@ -1,9 +1,12 @@
 package com.callor.student.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.student.models.UserVO;
 import com.callor.student.service.UserService;
@@ -25,8 +28,17 @@ public class UserController {
 
 	// http://localhost:8080/student/user/login 까지의 요청을 처리할 부분
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
+	public String login(@RequestParam(required = false, defaultValue = "") String error, Model model) {
+		if (error.equalsIgnoreCase("need")) {
+			model.addAttribute("MSG", "로그인이 필요합니다");
+		}
 		return null;
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(UserVO userVO, HttpSession httpSession) {
+		httpSession.setAttribute("USER", userVO);
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)

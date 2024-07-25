@@ -6,6 +6,9 @@
 <form class="user login" method="post">
 	<fieldset>
 		<legend>로그인</legend>
+		<c:if test="${not empty MSG }">
+			<h4>${MSG }</h4>
+		</c:if>
 		<div>
 			<input type="text" placeholder="ID" name="username" /> <span>*</span>
 		</div>
