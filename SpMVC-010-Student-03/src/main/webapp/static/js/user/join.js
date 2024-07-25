@@ -33,13 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const onJoinSubmit = () => {
     // alert("button click");
     // 유사 배열을 순수 배열로 변경하기
-    Array.from(error_inputs).forEach((span) => (span.style.display = "none"));
+    // Array.from(error_inputs).forEach((span) => (span.style.display = "none"));
 
-    const input_values_array = Array.from(join_inputs);
+    let yesValid = true;
+    //    const input_values_array = Array.from(join_inputs);
 
-    input_values_array.forEach((_, index) => {
-      if (emptyValid(index)) return false;
-    });
+    for (let i = 0; i < error_inputs.length; i++) {
+      const span = error_inputs[i];
+      span.style.display = "none";
+      if (!(yesValid = emptyValid(i))) break;
+    }
+
+    if (yesValid) join_form.submit();
+
+    // error_inputs.forEach((span, index) => {
+    //   span.style.display = "none";
+    //   yesValid = emptyValid(index);
+    //   if (!yesValid) break;
+    // });
+
+    // if (yesValid) {
+    //   join_form.submit();
+    // }
     // const input_values = input_values_array.map((input) => input.value);
     // if (!input_values[INPUT_INDEX.username]) {
     //   const error_input = error_inputs[INPUT_INDEX.username];
