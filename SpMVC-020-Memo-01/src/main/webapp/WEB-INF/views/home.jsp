@@ -12,6 +12,8 @@
 <script>
 	const rootPath = "${rootPath}"
 </script>
+<script src="https://kit.fontawesome.com/f1635a8293.js"
+	crossorigin="anonymous"></script>
 <script src="${rootPath }/static/js/list.js"></script>
 </head>
 <body>
@@ -24,9 +26,11 @@
 					type="button" value="새로작성" />
 			</div>
 			<ul class="memo-list">
-				<li>오늘은 수요일</li>
-				<li>메모장 만들기</li>
-				<li>Spring MVC</li>
+				<c:forEach items="${MEMOS }" var="MEMO">
+					<li data-seq="${MEMO.m_seq }"><i class="fa-solid fa-user"></i>
+						<i>&#128508;</i> <span>${MEMO.m_subject }</span> <i class="delete">&times;</i>
+					</li>
+				</c:forEach>
 			</ul>
 		</article>
 		<article class="sub"></article>
