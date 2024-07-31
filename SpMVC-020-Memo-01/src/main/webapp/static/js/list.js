@@ -9,18 +9,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const m_date = timeBox?.querySelector("input[name='m_date']");
   const m_time = timeBox?.querySelector("input[name='m_time']");
   const btn_new = timeBox?.querySelector("input[type='button']");
+  const subBox = document.querySelector("article.sub");
+
   const getToday = () => {
     const today = new Date();
     m_date.value = today.toISOString().split("T")[0];
     m_time.value = today.toISOString().split("T")[1].split(".")[0];
   };
 
+  const onSaveHandler = () => {
+    const input_m_date = subBox.querySelector("input[name='m_date']");
+    const input_m_time = subBox.querySelector("input[name='m_time']");
+    input_m_date.value = m_date.value;
+    input_m_time.value = m_time.value;
+
+    const input_m_subject = subBox.querySelector("input[name='m_subject']");
+    const input_m_content = subBox.querySelector("textarea[name='m_content']");
+
+    if (!input_m_subject.value) {
+      alert("제목을 입력해주세요");
+      input_m_subject.select();
+      return false;
+    }
+
+    if (!input_m_content.value) {
+      alert("내용을 입력해주세요");
+      input_m_content.select();
+      return false;
+    }
+
+    subBox.querySelector("form.memo.input").submit();
+  };
+
   const onNewHandler = async () => {
     getToday();
     const response = await fetch(`${rootPath}/comps/input`);
     const html = await response.text();
-    const subBox = document.querySelector("article.sub");
     subBox.innerHTML = html;
+    const btn_save = subBox.querySelector("input.btn-save");
+    btn_save.addEventListener("click", onSaveHandler);
   };
 
   btn_new.addEventListener("click", onNewHandler);

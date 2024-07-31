@@ -83,7 +83,11 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public int insert(Memo memo) {
-		return 0;
+		String m_seq = UUID.randomUUID().toString();
+		memo.setM_seq(m_seq);
+		memoList.add(memo);
+
+		return memoList.size();
 	}
 
 	@Override
