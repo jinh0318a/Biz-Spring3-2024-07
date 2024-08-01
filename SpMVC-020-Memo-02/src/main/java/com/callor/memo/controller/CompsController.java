@@ -60,4 +60,10 @@ public class CompsController {
 		model.addAttribute("MEMO", memo);
 		return "comps/input";
 	}
+
+	@RequestMapping(value = "/delete/{m_seq}", method = RequestMethod.GET)
+	public String delete(@PathVariable(name = "m_seq") String m_seq) {
+		memoService.delete(m_seq);
+		return "redirect:/comps/list";
+	}
 }
