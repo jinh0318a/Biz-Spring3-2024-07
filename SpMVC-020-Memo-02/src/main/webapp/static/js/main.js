@@ -63,7 +63,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = subBox.querySelector("form.memo.input");
 
     // form 의 input 에 입력된 데이터를 Ajax 방식으로 전송하기 위해 변환하기
+    // form 의 데이터를 FormData type 으로 변환
     const formData = new FormData(form);
+
+    // spring server 에 fetch() 를 사용하여 데이터를 전송할때는
+    // 데이터 일렬화(직렬화, String Serialize) 한다
+    const planFormData = Object.fromEntries(formData.entries());
+    // 문자열화
+    const payload = JSON.stringify(planFormData);
+
+    // fetch 로 보내기위한 설정
+    const fetchConfig = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: payload,
+    };
+
+    fetch(`${rootPath}/comps/input`, fetchConfig)
+      .then((res) => res.text())
+      .then((html) => (listBox.innerHTML = html));
   };
 
   subBox?.addEventListener("click", (e) => {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,10 +39,15 @@ public class CompsController {
 	}
 
 	@RequestMapping(value = "/input", method = RequestMethod.POST)
-	public String input(Memo memo) {
+	public String input(@RequestBody Memo memo) {
 		log.debug(memo.toString());
-		memoService.insert(memo);
-		return "redirect:/";
+		String m_seq = memo.getM_seq();
+		if (m_seq == null || m_seq.isBlank()) {
+			memoService.insert(memo);
+		} else {
+			memoService.update(memo);
+		}
+		return "redirect:/comps/list";
 	}
 
 	// localhost:8080/memo/comps/update/333 과 같이 요청이오면

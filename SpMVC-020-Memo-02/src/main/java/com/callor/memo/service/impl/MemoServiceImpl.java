@@ -92,6 +92,14 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public int update(Memo memo) {
+		String m_seq = memo.getM_seq();
+		int nSize = memoList.size();
+		int index;
+		for (index = 0; index < nSize; index++) {
+			if (memoList.get(index).getM_seq().equals(m_seq))
+				break;
+		}
+		memoList.set(index, memo);
 		return 0;
 	}
 
