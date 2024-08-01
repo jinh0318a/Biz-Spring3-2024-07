@@ -10,6 +10,7 @@
 <ul class="memo-list">
 	<c:forEach items="${MEMOS }" var="MEMO">
 		<li data-seq="${MEMO.m_seq }"><i class="fa-solid fa-user"></i> <i>&#128508;</i>
-			<span>${MEMO.m_subject }</span> <i class="delete">&times;</i></li>
+			<span class="memo-content">${MEMO.m_subject }</span> <i
+			class="delete">&times;</i></li>
 	</c:forEach>
 </ul>

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath }" var="rootPath" />
-<form method="POST" class="memo input" action="${rootPath }/comps/input">
+<form class="memo input">
 	<input type="hidden" name="m_seq" value="${MEMO.m_seq }"> <input
 		type="hidden" name="m_date" value="${MEMO.m_date }"> <input
 		type="hidden" name="m_time" value="${MEMO.m_time }"> <input
