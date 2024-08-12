@@ -39,3 +39,37 @@
 - 속성을 `th:` prefix 로 시작한다.
 - 정적 web server를 사용하여 html 파일을 열면 `th:*` 로 설정된 속성은 모두 무시되괴 화면에 나타나지 않는다.
 - 개발자와 화면디자이너간에 협업관계가 매우 좋아진다.
+
+
+### thymeleaf-layout.xml 세팅
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="templateResolver"
+		class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML" />
+		<property name="cacheable" value="false" />
+	</bean>
+	<bean id="thEngine"
+		class="org.thymeleaf.spring5.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+		<property name="enableSpringELCompiler" value="true" />
+		<property name="additionalDialects">
+			<set>
+				<bean
+					class="nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect" />
+			</set>
+		</property>
+	</bean>
+	<bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="thEngine" />
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="order" value="1" />
+	</bean>
+</beans>
+```
