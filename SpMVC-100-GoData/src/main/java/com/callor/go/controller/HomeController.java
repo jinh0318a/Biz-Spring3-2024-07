@@ -20,14 +20,19 @@ public class HomeController {
 		super();
 		this.bisService = bisService;
 	}
-
-	@ResponseBody
-	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-	public List<BisStation> home(Model model) {
-
-		List<BisStation> bisList = bisService.getStations();
-
-		return bisList;
+	
+	@RequestMapping(value="/")
+	public String home() {
+		return "home";
 	}
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+//	public List<BisStation> home(Model model) {
+//
+//		List<BisStation> bisList = bisService.getStations();
+//
+//		return bisList;
+//	}
 
 }
