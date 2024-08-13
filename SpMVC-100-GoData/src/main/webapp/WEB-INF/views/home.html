@@ -10,6 +10,13 @@
     <title>Document</title>
   </head>
   <body>
-    <form><input placeholder="정류장이름을 입력하세요" /></form>
+    <form><input placeholder="정류장이름을 입력하세요" name="station" /></form>
+    <ul>
+      <li th:each="STOP:${BIS_LIST}">
+        <span th:text="${STOP.STATION_NUM}">정류장번호</span>
+        <span th:text="${STOP.BUSSTOP_NAME}">정류장명</span>
+        <span th:text="${STOP.NEXT_BUSSTOP}">다음정류장</span>
+      </li>
+    </ul>
   </body>
 </html>
