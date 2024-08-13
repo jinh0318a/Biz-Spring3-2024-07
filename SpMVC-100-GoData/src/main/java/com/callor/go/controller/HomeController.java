@@ -28,7 +28,7 @@ public class HomeController {
 			Model model) {
 		List<BisStation> bisList = bisService.getStations(station);
 		model.addAttribute("BIS_LIST", bisList);
-		return "home";
+		return "station";
 	}
 
 //	@ResponseBody

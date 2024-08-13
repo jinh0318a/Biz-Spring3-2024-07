@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 import com.callor.go.config.DataGoConfig;
 import com.callor.go.models.BisStation;
 import com.callor.go.models.BisStationList;
+import com.callor.go.models.BusArrive;
+import com.callor.go.models.BusArriveList;
 import com.callor.go.service.BisService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -79,6 +81,35 @@ public class BisServiceImpl implements BisService {
 		log.debug("받은데이터 {}", bisList.toString());
 
 		return bisList;
+	}
+
+	@Override
+	public List<BusArrive> getBusArrive(String busstop_id) {
+
+		String apiURL = DataGoConfig.ARRIVE_URL;
+		apiURL += "?serviceKey=" + DataGoConfig.GO_API_KEY;
+		apiURL += "&BUSSTOP_ID=" + busstop_id;
+
+		URI arriveURI = null;
+		try {
+			arriveURI = new URI(apiURL);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		restTemplate.getInterceptors().add((request, body, execution) -> {
+			ClientHttpResponse response = execution.execute(request, body);
+			response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+			return response;
+		});
+
+		ResponseEntity<BusArriveList> busArriveEntity = restTemplate.exchange(arriveURI, HttpMethod.GET, null,
+				BusArriveList.class);
+
+		return busArriveEntity.getBody().ARRIVE_LIST;
 	}
 
 }
