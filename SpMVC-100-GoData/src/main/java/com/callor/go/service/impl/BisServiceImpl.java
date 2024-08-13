@@ -89,7 +89,7 @@ public class BisServiceImpl implements BisService {
 		String apiURL = DataGoConfig.ARRIVE_URL;
 		apiURL += "?serviceKey=" + DataGoConfig.GO_API_KEY;
 		apiURL += "&BUSSTOP_ID=" + busstop_id;
-
+		
 		URI arriveURI = null;
 		try {
 			arriveURI = new URI(apiURL);
@@ -97,7 +97,7 @@ public class BisServiceImpl implements BisService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		RestTemplate restTemplate = new RestTemplate();
 
 		restTemplate.getInterceptors().add((request, body, execution) -> {
@@ -108,8 +108,9 @@ public class BisServiceImpl implements BisService {
 
 		ResponseEntity<BusArriveList> busArriveEntity = restTemplate.exchange(arriveURI, HttpMethod.GET, null,
 				BusArriveList.class);
-
-		return busArriveEntity.getBody().ARRIVE_LIST;
+		log.debug(busArriveEntity.toString());
+		
+		return busArriveEntity.getBody().BUSSTOP_LIST;
 	}
 
 }
