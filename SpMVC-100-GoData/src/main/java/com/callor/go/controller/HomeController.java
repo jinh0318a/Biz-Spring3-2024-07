@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.go.models.BisStation;
-import com.callor.go.models.BusArrive;
 import com.callor.go.service.BisService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,15 +30,6 @@ public class HomeController {
 		List<BisStation> bisList = bisService.getStations(station);
 		model.addAttribute("BIS_LIST", bisList);
 		return "station";
-	}
-
-	// Path 방식 /arrive/{busstop_id}
-	@RequestMapping(value = "/arrive/{busstop_id}")
-	public String arrive(@PathVariable(name = "busstop_id") String busstop_id, Model model) {
-		List<BusArrive> arriveList = bisService.getBusArrive(busstop_id);
-		log.debug("도착정보 {}", arriveList);
-		model.addAttribute("ARRIVE_LIST", arriveList);
-		return "arrive";
 	}
 
 //	@ResponseBody
