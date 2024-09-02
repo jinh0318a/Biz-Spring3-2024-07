@@ -11,8 +11,12 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.callor.hello.dao.RoleDao;
+import com.callor.hello.dao.UserDao;
+import com.callor.hello.models.RoleVO;
 import com.callor.hello.models.UserVO;
 
 /*
@@ -24,6 +28,17 @@ import com.callor.hello.models.UserVO;
 @Service("authProviderImpl")
 public class AuthProviderImpl implements AuthenticationProvider {
 
+	private final UserDao userDao;
+	private final RoleDao roleDao;
+	private final PasswordEncoder passwordEncoder;
+
+	public AuthProviderImpl(UserDao userDao, RoleDao roleDao, PasswordEncoder passwordEncoder) {
+		super();
+		this.userDao = userDao;
+		this.roleDao = roleDao;
+		this.passwordEncoder = passwordEncoder;
+	}
+
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
@@ -32,31 +47,28 @@ public class AuthProviderImpl implements AuthenticationProvider {
 		String username = authentication.getName();
 		String password = (String) authentication.getCredentials();
 
-		if (username == null || username.isBlank() || !username.equals("jinh0318")) {
-			/*
-			 * 사용자 정보오류를 Spring Security 에게 전달하기 위하여 return 명령을 실행하는 대신 exception 을 발생시켜
-			 * 메시지를 부모에게 전달한다
-			 */
-			throw new UsernameNotFoundException("USERNAME 확인 필요");
+		UserVO userVO = userDao.findeById(username);
+		if (userVO == null) {
+			throw new UsernameNotFoundException("USERNAME 을 확인하세요");
 		}
 
-		if (password == null || password.isBlank() || !password.equals("12345")) {
-			throw new BadCredentialsException("비밀번호 확인 필요");
+		// 사용자가 입력한 비밀번호와 DB 에 저장된 암호화된 비밀번호를 비교하여
+		// 일치하면 true 아니면 false
+		boolean yesPassword = passwordEncoder.matches(password, userVO.getPassword());
+		if (!yesPassword) {
+			throw new BadCredentialsException("비밀번호가 틀렸습니다");
 		}
 
-		// 로그인한 사용자의 정보 만들기
-
-		UserVO user = UserVO.builder().username(username).email("jinh0318@naver.com").name("홍길동").build();
-
+		List<RoleVO> roleList = roleDao.findeByUsername(username);
 		// 로그인한 사용자의 권한 리스트 만들기
-
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-		grantList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		grantList.add(new SimpleGrantedAuthority("ROLE_USER"));
-
+		for (RoleVO role : roleList) {
+			grantList.add(new SimpleGrantedAuthority(role.getR_role()));
+		}
 		// 생성한 사용자정보와 권한리스트를 사용하여 토큰 만들기
 
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user, password, grantList);
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userVO, password,
+				grantList);
 
 		return token;
 	}

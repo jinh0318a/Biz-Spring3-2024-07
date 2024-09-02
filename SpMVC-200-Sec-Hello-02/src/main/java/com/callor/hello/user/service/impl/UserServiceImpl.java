@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.callor.hello.dao.RoleDao;
@@ -20,11 +21,13 @@ public class UserServiceImpl implements UserService {
 
 	private final UserDao userDao;
 	private final RoleDao roleDao;
+	private final PasswordEncoder passwordEncoder;
 
-	public UserServiceImpl(UserDao userDao, RoleDao roleDao) {
+	public UserServiceImpl(UserDao userDao, RoleDao roleDao, PasswordEncoder passwordEncoder) {
 		super();
 		this.userDao = userDao;
 		this.roleDao = roleDao;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Autowired
@@ -47,7 +50,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO createUser(UserVO userVO) {
 		log.debug("USER {}", userVO.toString());
-
+		String encPassword = passwordEncoder.encode(userVO.getPassword());
+		userVO.setPassword(encPassword);
 		List<UserVO> userList = userDao.selectAll();
 		List<RoleVO> roles = new ArrayList<>();
 		if (userList.size() > 0) {
@@ -59,7 +63,10 @@ public class UserServiceImpl implements UserService {
 			roles.add(RoleVO.builder().r_username(userVO.getUsername()).r_role("ROLE_USER").build());
 		}
 
-		return null;
+		int ret = userDao.insert(userVO);
+		ret += roleDao.insert(roles);
+
+		return userVO;
 	}
 
 	@Override

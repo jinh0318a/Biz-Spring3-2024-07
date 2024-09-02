@@ -5,7 +5,14 @@
 
 <mapper namespace="com.callor.hello.dao.UserDao">
 
-	<insert id="insert"></insert>
+	<insert id="insert">
+		insert into tbl_users(
+		username, password, realname, email, nickname
+		) values(
+		#{username}, #{password} ,#{realname}, #{email}, #{nickname}
+		)
+
+	</insert>
 	<update id="update"></update>
 
 	<select id="create_user_table">

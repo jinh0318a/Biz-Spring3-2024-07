@@ -15,4 +15,6 @@ public interface UserDao {
 	public UserVO findeById(String username);
 
 	public void create_user_table(String dumy);
+
+	public int insert(UserVO userVO);
 }
