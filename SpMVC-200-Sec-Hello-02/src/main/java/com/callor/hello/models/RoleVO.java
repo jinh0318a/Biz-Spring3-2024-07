@@ -8,17 +8,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@ToString
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Builder
-public class UserVO {
+public class RoleVO {
 
-	private String username;
-	private String password;
-	private String email;
-	private String realname;
-	private String nickname;
-
+	private String r_username;
+	private String r_role;
 }
